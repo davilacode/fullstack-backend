@@ -1,7 +1,7 @@
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 
-interface Props {
+type Props = {
   children: React.ReactNode;
 }
 
@@ -12,7 +12,9 @@ const DashboardLayout = (
     <>
       <Header />
       <main>
-        {children}
+        <section className="max-w-screen-2xl px-4 py-8 mx-auto">
+          {children}
+        </section>
       </main>
       <Footer />
     </>

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const routes = [
   { route: "/", name: "Dashboard" },
@@ -9,11 +10,12 @@ const routes = [
 ]
 
 const Navigation = () => {
+  const pathname = usePathname();
   return ( 
     <ul className="flex gap-3">
       {routes.map(({ route, name }) => (
         <li key={route}>
-          <Link href={route || "/"}>
+          <Link href={route || "/"} className={pathname === route ? "active" : "" }>
             {name} 
           </Link>
         </li>

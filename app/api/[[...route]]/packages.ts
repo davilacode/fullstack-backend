@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { eq } from "drizzle-orm";
 import { createId } from "@paralleldrive/cuid2";
 

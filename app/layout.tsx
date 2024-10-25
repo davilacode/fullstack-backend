@@ -1,5 +1,6 @@
 import { ClerkProvider } from "@clerk/nextjs"
 import type { Metadata } from "next"
+import QueryProvider from "@/providers/queryProvider"
 
 // Lenguaje en español
 import { esES } from "@clerk/localizations"
@@ -34,7 +35,9 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          {children}
+          <QueryProvider>
+            {children}
+          </QueryProvider>
         </body>
       </html>
     </ClerkProvider>

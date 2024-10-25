@@ -10,13 +10,13 @@ import {
 
 import { insertClientsSchema } from '@/db/schema';
 
-import { useClients } from "@/functions/clients/hooks/useClients";
+import { useNewClients } from "@/functions/clients/hooks/useClients";
 import { ClientForm } from "@/functions/clients/components/clientForm";
 import { useCreateClients } from "@/functions/clients/api/useCreateClients";
 
 export function ClientDialog() {
 
-  const { isOpen, onClose } = useClients();
+  const { isOpen, onClose } = useNewClients();
 
   const mutation = useCreateClients();
 

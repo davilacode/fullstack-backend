@@ -12,6 +12,7 @@ import {
   FormLabel
 } from "@/components/ui/form";
 import { insertClientsSchema } from '@/db/schema';
+import { Trash } from 'lucide-react';
 
 const formSchema = insertClientsSchema.pick({
   name: true,
@@ -26,11 +27,13 @@ type Props = {
   id?: string;
   defaultValues?: FormValues;
   onSubmit: (values: FormValues) => void;
+  onDelete?: () => void;
   disabled?: boolean;
+  isDelete?: boolean;
 };
 
 export const ClientForm = ({
-  id, defaultValues, onSubmit, disabled 
+  id, defaultValues, onSubmit, disabled, isDelete, onDelete
 }: Props) => {
 
   const form = useForm<FormValues>({
@@ -42,6 +45,10 @@ export const ClientForm = ({
     onSubmit(values);
   });
 
+  const handleDelete = (() => {
+    onDelete?.();
+  });
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-4">
@@ -49,7 +56,7 @@ export const ClientForm = ({
           name="name"
           control={form.control}
           render={({ field }) => (
-            <FormItem className="mb-4">
+            <FormItem>
               <FormLabel htmlFor={field.name}>Nombre</FormLabel>
               <FormControl>
                 <Input 
@@ -67,7 +74,7 @@ export const ClientForm = ({
           name="email"
           control={form.control}
           render={({ field }) => (
-            <FormItem className="mb-4">
+            <FormItem>
               <FormLabel htmlFor={field.name}>Correo electrónico</FormLabel>
               <FormControl>
                 <Input 
@@ -86,7 +93,7 @@ export const ClientForm = ({
           name="phone"
           control={form.control}
           render={({ field }) => (
-            <FormItem className="mb-4">
+            <FormItem>
               <FormLabel htmlFor={field.name}>Teléfono</FormLabel>
               <FormControl>
                 <Input 
@@ -106,7 +113,7 @@ export const ClientForm = ({
           name="address"
           control={form.control}
           render={({ field }) => (
-            <FormItem className="mb-4">
+            <FormItem>
               <FormLabel htmlFor={field.name}>Dirección</FormLabel>
               <FormControl>
                 <Input 
@@ -120,9 +127,15 @@ export const ClientForm = ({
             </FormItem>
           )}
         />
-        <Button className="w-full">
+        <Button className="w-full" disabled={disabled}>
           {id ? "Guardar" : "Crear"}
         </Button>
+        {(id) && (
+          <Button type="button" variant="outline" disabled={disabled} onClick={handleDelete}>
+            <Trash className="size-4" />
+            Eliminar
+          </Button>
+        )}
       </form>
     </Form>
   );

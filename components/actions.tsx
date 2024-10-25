@@ -3,7 +3,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -30,8 +29,6 @@ const Actions = ({ id }: Props) => {
       <DropdownMenuContent>
         <DropdownMenuLabel>Acciones</DropdownMenuLabel>
         <DropdownMenuItem onClick={() => onOpen(id)}>Editar</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => {}}>Eliminar</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
 

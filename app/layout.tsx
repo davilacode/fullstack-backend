@@ -1,11 +1,13 @@
 import { ClerkProvider } from "@clerk/nextjs"
-import type { Metadata } from "next"
-import QueryProvider from "@/providers/queryProvider"
-
 // Lenguaje en español
 import { esES } from "@clerk/localizations"
-
+import type { Metadata } from "next"
 import localFont from "next/font/local"
+
+import QueryProvider from "@/providers/queryProvider"
+import { DialogProvider } from "@/providers/dialogProvider"
+import { Toaster } from "@/components/ui/sonner"
+
 import "./globals.css"
 
 const geistSans = localFont({
@@ -36,6 +38,8 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <QueryProvider>
+            <DialogProvider />
+            <Toaster />
             {children}
           </QueryProvider>
         </body>

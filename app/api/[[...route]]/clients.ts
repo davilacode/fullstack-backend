@@ -20,6 +20,9 @@ const app = new Hono()
       const data = await db.select({
           id: clients.id,
           name: clients.name,
+          phone: clients.phone,
+          email: clients.email,
+          address: clients.address
         })
         .from(clients);
 

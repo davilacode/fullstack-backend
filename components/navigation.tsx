@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation";
 
 const routes = [
   { route: "/", name: "Dashboard" },
+  { route: "/clients", name: "Clientes" },
+  { route: "/packages", name: "Envíos" },
   { route: "/tracking", name: "Rastreo" },
-  { route: "/send", name: "Enviar" },
 ]
 
 const Navigation = () => {

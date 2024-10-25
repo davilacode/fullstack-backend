@@ -15,6 +15,13 @@
       "when": 1729832166101,
       "tag": "0001_dark_red_wolf",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1729860896676,
+      "tag": "0002_awesome_captain_flint",
+      "breakpoints": true
     }
   ]
 }

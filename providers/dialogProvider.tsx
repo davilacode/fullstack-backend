@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ClientDialog } from "@/functions/clients/components/clientDialog"
+import { CreateClientDialog } from "@/functions/clients/components/createClientDialog"
+import { EditClientDialog } from "@/functions/clients/components/editClientDialog"
 
 export const DialogProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
@@ -14,7 +15,8 @@ export const DialogProvider = () => {
 
   return (
     <>
-      <ClientDialog />
+      <CreateClientDialog />
+      <EditClientDialog />
     </>
   )
 }

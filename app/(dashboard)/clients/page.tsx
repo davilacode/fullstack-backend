@@ -1,16 +1,32 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { useClients } from "@/functions/clients/hooks/useClients";
+import { useNewClients } from "@/functions/clients/hooks/useClients";
+import { Plus } from "lucide-react";
 
+import { columns } from "./columns"
+import { DataTable } from "@/components/data-table";
+import { useGetClients } from "@/functions/clients/api/useGetClients";
 
 const Clients = () => {
-  const { onOpen } = useClients();
+  const { onOpen } = useNewClients();
+  const clientsQuery = useGetClients();
+  const data = clientsQuery.data ?? [];
+
+  if (clientsQuery.isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div>
-      <h2>Clientes</h2>
-      <Button onClick={onOpen}>Abrir dialog</Button>
+      <div className="flex py-2 flex-col lg:flex-row gap-y-2 border-b-2 border-stone-600 justify-between mb-4">
+        <h2 className="font-bold text-2xl">Clientes</h2>
+        <Button onClick={() => onOpen()}>
+          <Plus className="size-4" /> 
+          cliente
+        </Button>
+      </div>
+      <DataTable columns={columns} data={data} />
     </div>
   );
 }

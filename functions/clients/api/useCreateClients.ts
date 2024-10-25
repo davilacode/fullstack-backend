@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 type ResponseType = InferResponseType<typeof client.api.clients.$post>;
 type RequestType = InferRequestType<typeof client.api.clients.$post>["json"];
 
-
+// useMutation de react-query para crear clientes en la BD
 export const useCreateClients = () => {
   const queryClient = useQueryClient();
 

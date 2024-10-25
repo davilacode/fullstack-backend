@@ -1,5 +1,11 @@
 import { z } from "zod";
 
+
+import { useGetClient } from "@/functions/clients/api/useGetClient";
+import { useUpdateClient } from "@/functions/clients/api/useUpdateClient";
+import { useDeleteClient } from "@/functions/clients/api/useDeleteClient";
+import { useEditClients } from "@/functions/clients/hooks/useClients";
+import { ClientForm } from "@/functions/clients/components/clientForm";
 import {
   Dialog,
   DialogContent,
@@ -7,15 +13,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-
 import { insertClientsSchema } from '@/db/schema';
 
-import { useEditClients } from "@/functions/clients/hooks/useClients";
-import { ClientForm } from "@/functions/clients/components/clientForm";
-import { useUpdateClient } from "@/functions/clients/api/useUpdateClient";
-import { useGetClient } from "@/functions/clients/api/useGetClient";
-import { useDeleteClient } from "@/functions/clients/api/useDeleteClient";
-
+// Modal para editar un cliente
 export function EditClientDialog() {
 
   const { isOpen, onClose, id } = useEditClients();

@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { Hono } from "hono";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { zValidator } from "@hono/zod-validator";
 import { createId } from "@paralleldrive/cuid2";
 

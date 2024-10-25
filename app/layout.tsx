@@ -1,11 +1,14 @@
-import { ClerkProvider } from "@clerk/nextjs"
-// Lenguaje en español
-import { esES } from "@clerk/localizations"
 import type { Metadata } from "next"
 import localFont from "next/font/local"
+import { ClerkProvider } from "@clerk/nextjs"
+// Lenguaje en español para Clerk
+import { esES } from "@clerk/localizations"
 
+// Provider de Tanstack React Query
 import QueryProvider from "@/providers/queryProvider"
+// Provider para mostrar todas las modales
 import { DialogProvider } from "@/providers/dialogProvider"
+// Componente para mostrar notificaciones
 import { Toaster } from "@/components/ui/sonner"
 
 import "./globals.css"

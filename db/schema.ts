@@ -1,6 +1,7 @@
 import { pgTable, pgEnum, text, numeric, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod"
 
+// Esquema de la tabla clients
 export const clients = pgTable("clients", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
@@ -12,9 +13,12 @@ export const clients = pgTable("clients", {
 
 export const insertClientsSchema = createInsertSchema(clients);
 
+// Enumerador de tipo de paquete
 export const packageTypeEnum = pgEnum('type', ['letter', 'package']);
+// Enumerador de estado de paquete
 export const packageStatusEnum = pgEnum('status', ['transit', 'delivered', 'pending', 'cancelled']);
 
+// Esquema de la tabla packages
 export const packages = pgTable("packages", {
   id: text("id").primaryKey(),
   content: text("content").notNull(),

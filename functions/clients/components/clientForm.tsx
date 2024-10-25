@@ -1,7 +1,9 @@
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Trash } from 'lucide-react';
 
+// componentes de la UI
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,8 +13,9 @@ import {
   FormItem,
   FormLabel
 } from "@/components/ui/form";
+
+// esquema de validación
 import { insertClientsSchema } from '@/db/schema';
-import { Trash } from 'lucide-react';
 
 const formSchema = insertClientsSchema.pick({
   name: true,
@@ -29,11 +32,11 @@ type Props = {
   onSubmit: (values: FormValues) => void;
   onDelete?: () => void;
   disabled?: boolean;
-  isDelete?: boolean;
 };
 
+// Formulario para crear y editar clientes
 export const ClientForm = ({
-  id, defaultValues, onSubmit, disabled, isDelete, onDelete
+  id, defaultValues, onSubmit, disabled, onDelete
 }: Props) => {
 
   const form = useForm<FormValues>({

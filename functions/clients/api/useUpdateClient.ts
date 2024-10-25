@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 type ResponseType = InferResponseType<typeof client.api.clients[":id"]["$patch"]>;
 type RequestType = InferRequestType<typeof client.api.clients[":id"]["$patch"]>["json"];
 
-
+// useMutation de react-query para actualizar clientes en la BD
 export const useUpdateClient = (id?: string) => {
   const queryClient = useQueryClient();
 

@@ -1,6 +1,8 @@
 import { client } from "@/lib/hono";
 import { useQuery } from "@tanstack/react-query";
 
+
+// Hook para obtener un cliente
 export const useGetClient = (id?: string ) => {
   const query = useQuery({
     enabled: !!id,

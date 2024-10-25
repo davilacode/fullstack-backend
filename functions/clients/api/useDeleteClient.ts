@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 
 type ResponseType = InferResponseType<typeof client.api.clients[":id"]["$delete"]>;
 
-
+// useMutation de react-query para eliminar clientes en la BD
 export const useDeleteClient = (id?: string) => {
   const queryClient = useQueryClient();
 

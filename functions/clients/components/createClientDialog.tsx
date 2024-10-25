@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+import { useCreateClients } from "@/functions/clients/api/useCreateClients";
+import { ClientForm } from "@/functions/clients/components/clientForm";
+import { useNewClients } from "@/functions/clients/hooks/useClients";
 import {
   Dialog,
   DialogContent,
@@ -7,19 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-
 import { insertClientsSchema } from '@/db/schema';
 
-import { useNewClients } from "@/functions/clients/hooks/useClients";
-import { ClientForm } from "@/functions/clients/components/clientForm";
-import { useCreateClients } from "@/functions/clients/api/useCreateClients";
-
+// Modal para crear un nuevo cliente
 export function CreateClientDialog() {
 
   const { isOpen, onClose } = useNewClients();
 
   const mutation = useCreateClients();
-
 
   const formSchema = insertClientsSchema.pick({
     name: true,

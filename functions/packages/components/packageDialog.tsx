@@ -8,25 +8,20 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
-import { insertClientsSchema } from '@/db/schema';
+import { insertPackagesSchema } from '@/db/schema';
 
-import { useNewClients } from "@/functions/clients/hooks/useClients";
-import { ClientForm } from "@/functions/clients/components/clientForm";
-import { useCreateClients } from "@/functions/clients/api/useCreateClients";
+import { useNewPackages } from "@/functions/packages/hooks/usePackages";
+import { PackageForm } from "@/functions/packages/components/packageForm";
+import { useCreatePackages } from "@/functions/packages/api/useCreatePackages";
 
 export function ClientDialog() {
 
-  const { isOpen, onClose } = useNewClients();
+  const { isOpen, onClose } = useNewPackages();
 
-  const mutation = useCreateClients();
+  const mutation = useCreatePackages();
 
 
-  const formSchema = insertClientsSchema.pick({
-    name: true,
-    email: true,
-    phone: true,
-    address: true
-  });
+  const formSchema = insertPackagesSchema;
 
   type FormValues = z.input<typeof formSchema>;
 
@@ -38,6 +33,8 @@ export function ClientDialog() {
     });
   }
 
+  
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[425px]">
@@ -47,14 +44,7 @@ export function ClientDialog() {
             Crea un nuevo cliente
           </DialogDescription>
         </DialogHeader>
-        <ClientForm onSubmit={onSubmit} disabled={mutation.isPending} defaultValues={
-          {
-            name: "",
-            email: "",
-            phone: "",
-            address: ""
-          }
-        } />
+        <PackageForm onSubmit={onSubmit} disabled={mutation.isPending} />
       </DialogContent>
     </Dialog>
   )

@@ -1,4 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UNET Fullstack Dev Course - Backend
+
+This is only for educational purpose to complete second part of the fullstack course and is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+> Note: Actually only works clients CRUD, but I'll update later the most I can to complete the project
+
+The project is a courier system, when the user is capable to create clients, send packages and tracking even without login.
+
+## Features
+* Using Next.js
+* OAuth made with [Clerk](https://clerk.com/)
+* [Supabase](https://supabase.com/) to handle a PostgreSQL DB
+* [Drizzle](https://drizzle.com/) ORM
+* [Hono](https://hono.dev) to create API endpoints much easier (is a framework like express)
+* Use Shadcn UI Components and Tailwind to speed frontend development
+* Zustand to handle client states and Tanstack React Query to handle server states
+* Deploy on Vercel
 
 ## Getting Started
 

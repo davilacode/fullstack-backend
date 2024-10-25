@@ -1,6 +1,7 @@
 import { client } from "@/lib/hono";
 import { useQuery } from "@tanstack/react-query";
 
+// Hook para obtener todos los clientes
 export const useGetClients = () => {
   const query = useQuery({
     queryKey: ["clients"],

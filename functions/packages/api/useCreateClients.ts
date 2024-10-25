@@ -5,7 +5,7 @@ import { client } from '@/lib/hono';
 import { toast } from 'sonner';
 
 type ResponseType = InferResponseType<typeof client.api.clients.$post>;
-type RequestType = InferRequestType<typeof client.api.clients.$post>["json"];
+type RequestType = InferRequestType<typeof client.api.clients.$post>;
 
 
 export const useCreateClients = () => {
@@ -15,7 +15,7 @@ export const useCreateClients = () => {
     Error,
     RequestType>({
       mutationFn: async (json) => {
-        const response = await client.api.clients.$post({ json });
+        const response = await client.api.clients.$post(json);
         return await response.json();
       },
       onSuccess: () => {

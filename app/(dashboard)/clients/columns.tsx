@@ -3,6 +3,7 @@
 import { InferResponseType } from "hono"
 import { ColumnDef } from "@tanstack/react-table"
 import { client } from "@/lib/hono"
+import { useEditClients } from "@/functions/clients/hooks/useClients";
 
 import Actions from "@/components/actions"
 
@@ -18,7 +19,14 @@ export const columns: ColumnDef<ResponseType>[] = [
     header: "Correo",
   },
   {
-    accessorKey: "actions",
-    cell: ({ row }) => <Actions id={row.original.id} />,
-  },
+      accessorKey: "actions",
+      cell: ({ row }) => {
+        return <ActionsCell row={row} />
+      }
+    },
 ]
+
+const ActionsCell: React.FC<{ row: { original: ResponseType } }> = ({ row }) => {
+  const { onOpen } = useEditClients();
+  return <Actions id={row.original.id} onOpen={onOpen} />;
+};

@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1729829466850,
-      "tag": "0000_mixed_ultimatum",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1729832166101,
-      "tag": "0001_dark_red_wolf",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1729860896676,
-      "tag": "0002_awesome_captain_flint",
+      "when": 1729896926847,
+      "tag": "0000_parched_baron_strucker",
       "breakpoints": true
     }
   ]

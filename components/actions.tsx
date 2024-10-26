@@ -7,16 +7,15 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Button } from "@/components/ui/button"
-import { useEditClients } from "@/functions/clients/hooks/useClients";
 import { MoreHorizontal } from "lucide-react";
 
 type Props = {
   id: string;
+  onOpen: (id: string) => void;
 }
 
-const Actions = ({ id }: Props) => {
+const Actions = ({ id, onOpen }: Props) => {
 
-  const { onOpen } = useEditClients();
   
   return ( 
     <DropdownMenu>

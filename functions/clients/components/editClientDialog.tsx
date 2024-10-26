@@ -35,6 +35,7 @@ export function EditClientDialog() {
   } : { name: "", email: "", phone: "", address: ""
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const formSchema = insertClientsSchema.pick({
     name: true,
     email: true,

@@ -143,7 +143,7 @@ const app = new Hono()
       large: true,
       weight: true,
       type: true,
-      status: true
+      status: true,
     })),
     async (c) => {
       const auth = getAuth(c);

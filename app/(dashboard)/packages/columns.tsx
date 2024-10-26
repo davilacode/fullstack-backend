@@ -22,8 +22,16 @@ export const columns: ColumnDef<ResponseType>[] = [
     header: "Destinatario",
   },
   {
-    accessorKey: "email",
-    header: "Correo",
+    accessorKey: "trackingId",
+    header: "Nro Guía",
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Fecha creación",
+  },
+  {
+    accessorKey: "status",
+    header: "Estado",
   },
   {
     accessorKey: "Actions",

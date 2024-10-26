@@ -3,10 +3,11 @@ import { Hono } from "hono";
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
 import { zValidator } from "@hono/zod-validator";
 import { createId } from "@paralleldrive/cuid2";
+import { aliasedTable, eq } from "drizzle-orm";
 
 import { db } from "@/db/drizzel";
 import { packages, clients, insertPackagesSchema } from "@/db/schema";
-import { aliasedTable, eq } from "drizzle-orm";
+import { generateTrackingNumber } from "@/lib/utils";
 
 const app = new Hono()
   .get(
@@ -31,7 +32,7 @@ const app = new Hono()
         recipientName: recipients.name,
         from: packages.from,
         to: packages.to,
-        hight: packages.hight,
+        height: packages.height,
         width: packages.width,
         large: packages.large,
         weight: packages.weight,
@@ -72,7 +73,7 @@ const app = new Hono()
         recipientId: packages.recipientId,
         from: packages.from,
         to: packages.to,
-        hight: packages.hight,
+        height: packages.height,
         width: packages.width,
         large: packages.large,
         weight: packages.weight,
@@ -102,13 +103,11 @@ const app = new Hono()
       recipientId: true,
       from: true,
       to: true,
-      hight: true,
+      height: true,
       width: true,
       large: true,
       weight: true,
-      trackingId: true,
-      type: true,
-      status: true
+      type: true
     })),
     async (c) => {
       const auth = getAuth(c);
@@ -121,6 +120,7 @@ const app = new Hono()
       const data = await db.insert(packages).values({
         id: createId(),
         userId: auth.userId,
+        trackingId: generateTrackingNumber(),
         ...values
       }).returning()
 
@@ -138,11 +138,10 @@ const app = new Hono()
       recipientId: true,
       from: true,
       to: true,
-      hight: true,
+      height: true,
       width: true,
       large: true,
       weight: true,
-      trackingId: true,
       type: true,
       status: true
     })),

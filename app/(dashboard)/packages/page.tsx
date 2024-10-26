@@ -23,7 +23,7 @@ const Packages = () => {
         <h2 className="font-bold text-2xl">Envíos</h2>
         <Button onClick={() => onOpen()}>
           <Plus className="size-4" /> 
-          envío
+          Envío
         </Button>
       </div>
       <DataTable columns={columns} data={data} />

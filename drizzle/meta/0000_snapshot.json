@@ -1,5 +1,5 @@
 {
-  "id": "bf0ce353-79fe-4eab-bd42-094bc7c865aa",
+  "id": "7e5d2ed8-ed9f-4a30-9bcf-bb6f511e3cb2",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -28,9 +28,15 @@
         },
         "phone": {
           "name": "phone",
-          "type": "numeric",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "address": {
+          "name": "address",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
         },
         "user_id": {
           "name": "user_id",
@@ -85,8 +91,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "hight": {
-          "name": "hight",
+        "height": {
+          "name": "height",
           "type": "numeric",
           "primaryKey": false,
           "notNull": true
@@ -111,35 +117,39 @@
         },
         "tracking_id": {
           "name": "tracking_id",
-          "type": "numeric",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
         "type": {
           "name": "type",
-          "type": "type",
+          "type": "package_type",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "'letter'"
         },
         "status": {
           "name": "status",
-          "type": "type",
+          "type": "package_status",
           "typeSchema": "public",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "'pending'"
         },
         "createdAt": {
           "name": "createdAt",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "now()"
         },
         "updatedAt": {
           "name": "updatedAt",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "now()"
         },
         "user_id": {
           "name": "user_id",
@@ -183,18 +193,18 @@
     }
   },
   "enums": {
-    "public.status": {
-      "name": "status",
+    "public.package_status": {
+      "name": "package_status",
       "schema": "public",
       "values": [
+        "pending",
         "transit",
         "delivered",
-        "pending",
         "cancelled"
       ]
     },
-    "public.type": {
-      "name": "type",
+    "public.package_type": {
+      "name": "package_type",
       "schema": "public",
       "values": [
         "letter",

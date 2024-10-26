@@ -1,4 +1,4 @@
-import { pgTable, pgEnum, text, numeric, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, pgEnum, text, timestamp, decimal } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod"
 
 // Esquema de la tabla clients
@@ -14,9 +14,9 @@ export const clients = pgTable("clients", {
 export const insertClientsSchema = createInsertSchema(clients);
 
 // Enumerador de tipo de paquete
-export const packageTypeEnum = pgEnum('type', ['letter', 'package']);
+export const packageTypeEnum = pgEnum('package_type', ['letter', 'package']);
 // Enumerador de estado de paquete
-export const packageStatusEnum = pgEnum('status', ['transit', 'delivered', 'pending', 'cancelled']);
+export const packageStatusEnum = pgEnum('package_status', ['pending', 'transit', 'delivered', 'cancelled']);
 
 // Esquema de la tabla packages
 export const packages = pgTable("packages", {
@@ -26,15 +26,15 @@ export const packages = pgTable("packages", {
   recipientId: text("recipient_id").references(() => clients.id).notNull(),
   from: text("from").notNull(),
   to: text("to").notNull(),
-  hight: numeric("hight").notNull(),
-  width: numeric("width").notNull(),
-  large: numeric("large").notNull(),
-  weight: numeric("weight").notNull(),
-  trackingId: numeric("tracking_id").notNull(),
-  type: packageTypeEnum(),
-  status: packageTypeEnum(),
-  createdAt: timestamp().notNull(), 
-  updatedAt: timestamp().notNull(),
+  height: decimal("height").notNull(),
+  width: decimal("width").notNull(),
+  large: decimal("large").notNull(),
+  weight: decimal("weight").notNull(),
+  trackingId: text("tracking_id").notNull(),
+  type: packageTypeEnum('type').default('letter').notNull(),
+  status: packageStatusEnum('status').default('pending').notNull(),
+  createdAt: timestamp().notNull().defaultNow(), 
+  updatedAt: timestamp().notNull().defaultNow().$onUpdate(() => new Date()),
   userId: text("user_id").notNull()
 });
 
